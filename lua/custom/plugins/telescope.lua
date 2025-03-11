@@ -44,15 +44,22 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
+    local telescope = require 'telescope'
+    local actions = require 'telescope.actions'
     require('telescope').setup {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      -- defaults = {
-      --   mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
-      -- },
+      defaults = {
+        path_display = { 'smart' },
+        mappings = {
+          i = {
+            ['<C-k>'] = actions.move_selection_previous,
+            ['<C-j>'] = actions.move_selection_next,
+            ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+          },
+        },
+      },
       -- pickers = {}
       extensions = {
         ['ui-select'] = {
