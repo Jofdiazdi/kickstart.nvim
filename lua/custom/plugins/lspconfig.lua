@@ -5,12 +5,14 @@ return {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     -- Mason must be loaded before its dependents so we need to set it up here.
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-    { 'williamboman/mason.nvim', opts = {} },
+    { 'williamboman/mason.nvim',             opts = {} },
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',                   opts = {} },
+    { 'antosha417/nvim-lsp-file-operations', config = true },
+    { 'folke/neodev.nvim',                   ops = {} },
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
@@ -63,7 +65,7 @@ return {
         --  To jump back, press <C-t>.
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
-        -- Find references for the word under your cursor.
+        -- Find references for the word under your cdrursor.
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
         -- Jump to the implementation of the word under your cursor.
@@ -195,19 +197,19 @@ return {
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
+      -- NOTE: LSP cofigs
+
       -- clangd = {},
       gopls = {},
       pyright = {},
-      -- rust_analyzer = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`ts_ls`) will work just fine
-      ts_ls = {},
-      --
 
+      html = {},
+      cssls = {},
+      tailwindcss = {},
+      svelte = {},
+      solidity = {},
+      volar = {},
+      sqls = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
@@ -222,6 +224,32 @@ return {
           },
         },
       },
+
+      -- rust_analyzer = {},
+      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+      --
+      -- Some languages (like typescript) have entire language plugins that can be useful:
+      --    https://github.com/pmizio/typescript-tools.nvim
+      --
+      -- But for many setups, the LSP (`ts_ls`) will work just fine
+      ts_ls = {},
+
+      -- NOTE: Formatters config
+      prettier = {},
+      stylua = {},
+      isort = {},
+      black = {},
+      gofumpt = {},
+      goimports = {},
+      ormolu = {},
+      sqlfmt = {},
+
+      -- NOTE: Linters config
+      markdownlint = {},
+      pylint = {},
+      eslint_d = {},
+      hlint = {},
+      sqlfluff = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -239,7 +267,8 @@ return {
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
+      'stylua',       -- Used to format Lua code
+      'golangci-lint' --Used for fortmat Go code
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -31,12 +31,31 @@ return { -- Autoformat
       }
     end,
     formatters_by_ft = {
-      lua = { 'stylua' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      formatters_by_ft = {
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        svelte = { 'prettier' },
+        vue = { 'prettier' },
+        css = { 'prettier' },
+        html = { 'prettier' },
+        json = { 'prettier' },
+        yaml = { 'prettier' },
+        markdown = { 'prettier' },
+        graphql = { 'prettier' },
+        liquid = { 'prettier' },
+        lua = { 'stylua' },
+        python = { 'isort', 'black' },
+        haskell = { 'ormolu' },
+        go = { 'goimports', 'gofumpt' },
+        sql = { 'sqlfmt' }
+      },
+      format_on_save = {
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+      },
     },
   },
 }

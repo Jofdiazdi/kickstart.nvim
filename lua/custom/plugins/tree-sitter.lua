@@ -1,10 +1,12 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
+  dependencies = {
+    'windwp/nvim-ts-autotag',
+  },
   main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
   opts = {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
     -- Autoinstall languages that are not installed
     auto_install = true,
     highlight = {
@@ -15,6 +17,47 @@ return { -- Highlight, edit, and navigate code
       additional_vim_regex_highlighting = { 'ruby' },
     },
     indent = { enable = true, disable = { 'ruby' } },
+    autotag = {
+      enable = true,
+    },
+  },
+  ensure_installed = {
+    'bash',
+    'c',
+    'diff',
+    'json',
+    'javascript',
+    'typescript',
+    'tsx',
+    'yaml',
+    'css',
+    'svelte',
+    'dockerfile',
+    'gitignore',
+    'dart',
+    'go',
+    'haskell',
+    'solidity',
+    'sql',
+    'vue',
+    'kotlin',
+    'html',
+    'lua',
+    'luadoc',
+    'markdown',
+    'markdown_inline',
+    'query',
+    'vim',
+    'vimdoc',
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<C-space>',
+      node_incremental = '<C-space>',
+      scope_incremental = false,
+      node_decremental = '<bs>',
+    },
   },
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:
