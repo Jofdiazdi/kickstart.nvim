@@ -246,7 +246,6 @@ return {
 
       -- NOTE: Linters config
       markdownlint = {},
-      pylint = {},
       eslint_d = {},
       hlint = {},
       sqlfluff = {},
