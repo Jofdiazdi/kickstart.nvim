@@ -16,7 +16,6 @@ return {
         typescript = { "eslint_d" },
         javascriptreact = { "eslint_d" },
         typescriptreact = { "eslint_d" },
-        sql = { 'sqlfluff' }
       }
 
       -- To allow other plugins to add linters to requi svre('lint').linters_by_ft,

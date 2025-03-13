@@ -49,7 +49,6 @@ return { -- Autoformat
         python = { 'isort', 'black' },
         haskell = { 'ormolu' },
         go = { 'goimports', 'gofumpt' },
-        sql = { 'sqlfmt' }
       },
       format_on_save = {
         lsp_fallback = true,

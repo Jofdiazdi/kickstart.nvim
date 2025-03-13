@@ -242,13 +242,11 @@ return {
       gofumpt = {},
       goimports = {},
       ormolu = {},
-      sqlfmt = {},
 
       -- NOTE: Linters config
       markdownlint = {},
       eslint_d = {},
       hlint = {},
-      sqlfluff = {},
     }
 
     -- Ensure the servers and tools above are installed
