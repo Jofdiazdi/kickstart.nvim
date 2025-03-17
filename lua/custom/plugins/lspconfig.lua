@@ -209,7 +209,6 @@ return {
       svelte = {},
       solidity = {},
       volar = {},
-      sqls = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
