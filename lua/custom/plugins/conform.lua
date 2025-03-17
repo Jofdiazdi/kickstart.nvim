@@ -23,7 +23,6 @@ return {
         python = { 'isort', 'black' },
         haskell = { 'ormolu' },
         go = { 'goimports', 'gofumpt' },
-        sql = { 'sqlfluff' },
       },
       format_on_save = {
         lsp_fallback = true,

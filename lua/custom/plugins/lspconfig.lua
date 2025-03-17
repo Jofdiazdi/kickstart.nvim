@@ -246,7 +246,6 @@ return {
       markdownlint = {},
       eslint_d = {},
       hlint = {},
-      sqlfluff = {},
     }
 
     -- Ensure the servers and tools above are installed

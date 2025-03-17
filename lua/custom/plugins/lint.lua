@@ -12,10 +12,10 @@ return {
         vue = { 'eslint_d' },
         haskell = { 'hlint' },
         go = { 'golangcilint' },
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
       }
 
       -- To allow other plugins to add linters to requi svre('lint').linters_by_ft,
