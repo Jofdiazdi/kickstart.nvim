@@ -13,7 +13,18 @@ return {
     { 'j-hui/fidget.nvim', opts = {} },
     { 'antosha417/nvim-lsp-file-operations', config = true },
     { 'folke/neodev.nvim', ops = {} },
-
+    {
+      -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+      -- used for completion, annotations and signatures of Neovim apis
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      opts = {
+        library = {
+          -- Load luvit types when the `vim.uv` word is found
+          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        },
+      },
+    },
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
   },
