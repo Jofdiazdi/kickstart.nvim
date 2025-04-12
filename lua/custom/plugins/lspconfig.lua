@@ -66,6 +66,8 @@ return {
         --
         -- In this case, we create a function that lets us more easily define mappings specific
         -- for LSP related items. It sets the mode, buffer and description for us each time.
+        local opts = { buffer = event.buf, silent = true }
+
         local map = function(keys, func, desc, mode)
           mode = mode or 'n'
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -196,6 +198,7 @@ return {
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local util = require 'lspconfig/util'
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     -- Enable the following language servers
@@ -211,7 +214,25 @@ return {
       -- NOTE: LSP cofigs
 
       -- clangd = {},
-      gopls = {},
+      gopls = {
+        cmd = { 'gopls' },
+        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
+        settings = {
+          gopls = {
+            staticcheck = true,
+            gofumpt = true,
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+              unusedparams = true,
+              nilness = true,
+              shadow = true,
+              unusedwrite = true,
+            },
+          },
+        },
+      },
       pyright = {},
 
       html = {},
@@ -275,7 +296,6 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
-      'golangci-lint', --Used for fortmat Go code
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

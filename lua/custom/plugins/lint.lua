@@ -11,7 +11,6 @@ return {
         svelte = { 'eslint_d' },
         vue = { 'eslint_d' },
         haskell = { 'hlint' },
-        go = { 'golangcilint' },
         javascript = { 'eslint_d' },
         typescript = { 'eslint_d' },
         javascriptreact = { 'eslint_d' },
@@ -48,7 +47,7 @@ return {
       -- lint.linters_by_ft['rst'] = nil
       -- lint.linters_by_ft['ruby'] = nil
       -- lint.linters_by_ft['terraform'] = nil
-      -- lint.linters_by_ft['text'] = nil
+      -- lint.linters_by_ft['text' ] = nil
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
@@ -64,6 +63,10 @@ return {
           end
         end,
       })
+
+      vim.keymap.set('n', '<leader>fl', function()
+        lint.try_lint()
+      end, { desc = 'Triggers linting for current file' })
     end,
   },
 }
