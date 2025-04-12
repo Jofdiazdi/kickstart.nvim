@@ -1,6 +1,18 @@
 return {
   {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+
+    config = function()
+      require('catppuccin').setup {
+        flavour = 'mocha', -- latte, frappe, macchiato, mocha
+      }
+    end,
+  },
+  {
     'folke/tokyonight.nvim',
+
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       local bg = '#011628'
@@ -33,8 +45,6 @@ return {
           colors.fg_sidebar = fg_dark
         end,
       }
-      -- load the colorscheme here
-      vim.cmd [[colorscheme tokyonight]]
     end,
   },
 }
