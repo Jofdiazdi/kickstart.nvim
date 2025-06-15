@@ -20,7 +20,10 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup('custom.plugins', {
+require('lazy').setup({
+  { import = 'custom.plugins' },
+  { import = 'custom.plugins.lsp' },
+}, {
   checker = {
     enable = true,
     notify = false,
