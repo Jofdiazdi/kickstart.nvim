@@ -33,7 +33,6 @@ keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window'
 keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode with jk' })
-keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = 'Clear search highlights' })
 
 -- increment/decrement numbers
 keymap.set('n', '<leader>-', 'C-x', { desc = 'Decrement number' })
