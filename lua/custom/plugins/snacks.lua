@@ -186,7 +186,7 @@ return {
         desc = 'Notification History',
       },
       {
-        '<leader>e',
+        '<leader>fe',
         function()
           Snacks.explorer()
         end,
@@ -194,25 +194,25 @@ return {
       },
       -- find
       {
-        '<leader>fb',
+        '<leader>sb',
         function()
           Snacks.picker.buffers()
         end,
-        desc = 'Buffers',
+        desc = 'Search Buffers',
       },
       {
-        '<leader>fc',
+        '<leader>sc',
         function()
           Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
         end,
-        desc = 'Find Config File',
+        desc = 'Search Config File',
       },
       {
-        '<leader>ff',
+        '<leader>sf',
         function()
           Snacks.picker.files()
         end,
-        desc = 'Find Files',
+        desc = 'Search Files',
       },
       {
         '<leader>fg',
@@ -558,7 +558,7 @@ return {
         desc = 'Delete Buffer',
       },
       {
-        '<leader>cR',
+        '<leader>fr',
         function()
           Snacks.rename.rename_file()
         end,
